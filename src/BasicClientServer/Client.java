@@ -37,8 +37,23 @@ public class Client {
 	{
 		networkaccess = new NetworkAccess(ip, port);
 	}
-	
-	
+
+	/**
+	 * instantiates a new client and connects them to the server
+	 * this function will be called within the GUI
+	 */
+	public static Client newClient ()
+	{
+		//we will replace this static IP with a method that will calculate the users IP later on..
+		String host = "127.0.0.1";
+		int port = 8000;
+
+		// -- instantiate a Client object
+		//    the constructor will attempt to connect to the server
+		Client client = new Client(host, port);
+		return client;
+	}
+
 	/**
 	 * Disconnects the client from the server
 	 */
@@ -57,12 +72,8 @@ public class Client {
 	 */
 	public static void main(String[] args) {
 
-		String host = "127.0.0.1";
-		int port = 8000;
-		// -- instantiate a Client object
-		//    the constructor will attempt to connect to the server
-		Client client = new Client(host, port);
-		
+		Client client=newClient();
+
 		// -- send message to server and receive reply.
 		String commandString;
 		String replyString;
